@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'board'
+    'board',
+    'django_markdown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,3 +91,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static_files')
+
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"), )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )

@@ -5,7 +5,8 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^test/','photo.views.test'),
+    url(r'^markdown/',include('django_markdown.urls')),
+    url(r'^',include('board.urls')),
 
 )
 
