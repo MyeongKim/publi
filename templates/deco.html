@@ -1,35 +1,7 @@
-{% extends "base.html" %}
+{% extends "post.html" %}
 {% load django_markdown %}
 
-{% block blog_entries %}
-{% if object %}
-
-<div class="post" id = "myDiv">
-    <h2><a href="{% url 'entry_detail' slug=object.slug %}">{{ object.title }}</a></h2>
-    <p class="meta">
-        {{ object.created }} |
-        Tagged under {{  object.tags.all|join:", " }}
-    </p>
-    {{ object.body|markdown }}
-</div>
-
-<div>
-    <p>1. Select backgorund color</p>
-
-
-    <button onclick="myFunction1()">lightblue</button>
-    <button onclick="myFunction2()">red</button>
-    <button onclick="myFunction3()">black</button>
-    <button onclick="myFunction4()">yellow</button>
-    <input type="file" name="myFileSelect" />
-</div>
-        <br>
-
-        <div>
-            <p>2. Post Image Save</p>
-            <button id = "savebtn" onclick="save2canvas()">save</button>
-        </div>
-
+{% block deco %}
 <script>
 
     function myFunction1() {
@@ -72,6 +44,4 @@
 
     });
 </script>
-
-{% endif %}
 {% endblock %}

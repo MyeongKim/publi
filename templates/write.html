@@ -50,6 +50,9 @@
 		height: 500px;
 		width: 600px;
 	}
+    .sbtn {
+        position: relative;
+    }
 	</style>
 </head>
 <body>
@@ -57,13 +60,14 @@
 	<div class='header'>
 	</div>
 
-	<div class='content'>
-		Title<br>
-		<input type='text' class='title'></input><br><br>
-		Content<br>
-		<textarea type='text' class='content'></textarea><br>
+    <form method="post">
+        {% csrf_token %}
 
-	</div>
-	<input type='submit' value='submit'></input>
+    	<div class='content'>
+            {{ form.as_p }}
+	        <input class = 'sbtn' type='submit' value='submit'></input>
+	    </div>
+    </form>
+
 </body>
 </html>

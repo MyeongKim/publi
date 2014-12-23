@@ -3,7 +3,10 @@ from . import views, feed
 
 urlpatterns = patterns(
     '',
-    url(r'^$', views.BlogIndex.as_view(), name="index"),
+    url(r'^$', views.Timeline.as_view(), name="index"),
     url(r'^feed/$', feed.LatestPosts(), name="feed"),
-    url(r'^(?P<slug>\S+)$', views.BlogDetail.as_view, name="entry_datail"),
+    url(r'^ss', views.createPost , name = "plz"),
+    url(r'^(?P<slug>\S+)$', views.Post.as_view(), name="entry_detail"),
+
+
     )

@@ -1,7 +1,7 @@
 # coding : utf-8
 from django.db import models
 from django.core.urlresolvers import reverse
-
+from django.forms import ModelForm
 #example copy start ========
 class EntryQuerySet(models.QuerySet):
     def published(self):
@@ -17,7 +17,7 @@ class Entry(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     slug = models.SlugField(max_length=200, unique=True)
-    publish = models.BooleanField(default = False)
+    publish = models.BooleanField(default = True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now = True)
     tags = models.ManyToManyField(Tag)
@@ -34,6 +34,12 @@ class Entry(models.Model):
         verbose_name = "Blog Entry"
         verbose_name_plural = "Blog Entries"
         ordering = ["-created"]
+
+class EntryForm(ModelForm):
+
+    class Meta:
+        model = Entry
+        fields = ['title', 'body', 'slug']
 
 #example copy end ========
 
@@ -80,6 +86,3 @@ class Entry(models.Model):
 # 	Content = models.TextField(max_length=2000,null=False)
 # 	created = models.DateTimeField(auto_now_add=True, auto_now=True)
 #
-# class Users(models.Model):
-# 	Email = models.CharField(max_length=20, null=False)
-# 	Password = models.CharField(max_length=20, null=False)
